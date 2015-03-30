@@ -1,0 +1,86 @@
+{
+	"resourceType":"Conformance",
+	"id":"1.0",
+	"version":"0.4.0",
+	"name":"poc test",
+	"publisher":"SEGA",
+	"telecom":[
+		{
+			"system":"phone",
+			"value":"1111111111111"
+		}
+	],
+	"description":"jflkadjsoifjdsaikdsnjiueryiuwdkfajmkt8ierqkfmnclkaiurew",
+	"status":"draft",
+	"date":"2015-03-30T13:29:18",
+	"format":[
+		"xml",
+		"json"
+	],
+	"rest":[
+		{
+			"mode":"server",
+			"documentation":"fdafdsafdsafdsaf",
+			"resource":[
+				{
+					"type":"Conformance",
+					"profile":{
+						"reference":"dfadfsa"
+					},
+					"interaction":[
+						{
+							"code":"vread"
+						}
+					],
+					"searchParam":[
+						{
+							"name":"format",
+							"definition":"http://hl7.org/fhir/SearchParameter/conformance-format",
+							"type":"token",
+							"documentation":"formats supported (xml | json | mime type)"
+						},
+						{
+							"name":"format",
+							"definition":"http://hl7.org/fhir/SearchParameter/conformance-date",
+							"type":"date",
+							"documentation":"The conformance statement publication date"
+						}
+					]
+				},
+				{
+					"type":"Patient",
+					"profile":{
+						"reference":"dfadfsa"
+					},
+					"interaction":[
+						{
+							"code":"create"
+						}
+					],
+					"searchParam":[
+						{
+							"name":"format",
+							"definition":"http://hl7.org/fhir/SearchParameter/conformance-format",
+							"type":"token",
+							"documentation":"formats supported (xml | json | mime type)"
+						},
+						{
+							"name":"format",
+							"definition":"http://hl7.org/fhir/SearchParameter/conformance-date",
+							"type":"date",
+							"documentation":"The conformance statement publication date"
+						}
+					]
+				}
+			],
+			"operation":[
+				{
+					"name":"getPatient",
+					"definition":{
+						"display":"localhost:8080/Patient/{id}"
+					}
+				}
+			]
+		}
+	]
+}
