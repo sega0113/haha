@@ -41,11 +41,11 @@ public class ConferenceController {
 		conformance.setDate(new Date()).setStatus(ConformanceStatementStatus.DRAFT);
 		conformance.addTelecom().setSystem(ContactPointSystem.PHONE).setValue("1111111111111");
 		String[] types = pro.getProperty("type").split(";");
-		conformance.addRest().setMode(RestfulConformanceMode.SERVER).setDocumentation("fdafdsafdsafdsaf").addOperation().setName("getPatient").setDefinition(new Reference().setDisplay("localhost:8080/Patient/{id}"));
+		conformance.addRest().setMode(RestfulConformanceMode.SERVER).setDocumentation("fdafdsafdsafdsaf").addOperation().setName("getObservation").setDefinition(new Reference().setDisplay("localhost:8080/Observation/{id}"));
 		for(String type:types){
 			if(type.equals("Conformance"))
 				setConformance(conformance);
-			if(type.equals("Patient"))
+			if(type.equals("Observation"))
 				setPatient(conformance);
 		}
 	}
@@ -59,14 +59,16 @@ public class ConferenceController {
 	
 	private void setConformance(Conformance conformance){
 		ConformanceRestResourceComponent crrc = conformance.getRest().get(0).addResource().setType("Conformance").setProfile(new Reference().setReference("dfadfsa"));
-		crrc.addInteraction().setCode(TypeRestfulInteraction.READ).setCode(TypeRestfulInteraction.VREAD);
+		crrc.addInteraction().setCode(TypeRestfulInteraction.READ);
+		crrc.addInteraction().setCode(TypeRestfulInteraction.VREAD);
 		crrc.addSearchParam().setName("format").setDefinition("http://hl7.org/fhir/SearchParameter/conformance-format").setType(SearchParamType.TOKEN).setDocumentation("formats supported (xml | json | mime type)");
 		crrc.addSearchParam().setName("format").setDefinition("http://hl7.org/fhir/SearchParameter/conformance-date").setType(SearchParamType.DATE).setDocumentation("The conformance statement publication date");
 	}
 	
 	private void setPatient(Conformance conformance){
-		ConformanceRestResourceComponent crrc = conformance.getRest().get(0).addResource().setType("Patient").setProfile(new Reference().setReference("dfadfsa"));
-		crrc.addInteraction().setCode(TypeRestfulInteraction.READ).setCode(TypeRestfulInteraction.CREATE);
+		ConformanceRestResourceComponent crrc = conformance.getRest().get(0).addResource().setType("Observation").setProfile(new Reference().setReference("dfadfsa"));
+		crrc.addInteraction().setCode(TypeRestfulInteraction.READ);
+		crrc.addInteraction().setCode(TypeRestfulInteraction.CREATE);
 		crrc.addSearchParam().setName("format").setDefinition("http://hl7.org/fhir/SearchParameter/conformance-format").setType(SearchParamType.TOKEN).setDocumentation("formats supported (xml | json | mime type)");
 		crrc.addSearchParam().setName("format").setDefinition("http://hl7.org/fhir/SearchParameter/conformance-date").setType(SearchParamType.DATE).setDocumentation("The conformance statement publication date");
 		

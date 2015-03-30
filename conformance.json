@@ -2,19 +2,18 @@
 	"resourceType":"Conformance",
 	"id":"1.0",
 	"version":"0.4.0",
-	"name":"poc test",
-	"publisher":"SEGA",
+	"name":"UPMC Enterprises FHIR POC Conformance Statement",
+	"publisher":"UPMC Enterprises",
 	"telecom":[
 		{
 			"system":"phone",
 			"value":"1111111111111"
 		}
 	],
-	"description":"jflkadjsoifjdsaikdsnjiueryiuwdkfajmkt8ierqkfmnclkaiurew",
+	"description":"his is the conformance statement for the FHIR proof of concept project at UPMC Enterprises",
 	"status":"draft",
-	"date":"2015-03-30T13:29:18",
+	"date":"2015-03-30T13:49:54",
 	"format":[
-		"xml",
 		"json"
 	],
 	"rest":[
@@ -28,6 +27,9 @@
 						"reference":"dfadfsa"
 					},
 					"interaction":[
+						{
+							"code":"read"
+						},
 						{
 							"code":"vread"
 						}
@@ -48,11 +50,14 @@
 					]
 				},
 				{
-					"type":"Patient",
+					"type":"Observation",
 					"profile":{
 						"reference":"dfadfsa"
 					},
 					"interaction":[
+						{
+							"code":"read"
+						},
 						{
 							"code":"create"
 						}
@@ -75,9 +80,9 @@
 			],
 			"operation":[
 				{
-					"name":"getPatient",
+					"name":"getObservation",
 					"definition":{
-						"display":"localhost:8080/Patient/{id}"
+						"display":"localhost:8080/Observation/{id}"
 					}
 				}
 			]
